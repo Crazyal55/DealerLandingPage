@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  basePath: '/DealerLandingPage',
+  assetPrefix: '/DealerLandingPage',
+  trailingSlash: true,
 };
 
 export default nextConfig;
