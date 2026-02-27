@@ -45,20 +45,13 @@ export default function ScrollAnimation() {
     if (!canvas) return;
 
     const dpr = clamp(window.devicePixelRatio || 1, 1, 2);
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-
-    // Use full viewport size, not canvas size
-    const width = Math.max(1, Math.round(viewportWidth * dpr));
-    const height = Math.max(1, Math.round(viewportHeight * dpr));
-
-    console.log(`📐 Resizing canvas: ${width}x${height} (DPR: ${dpr}, viewport: ${viewportWidth}x${viewportHeight})`);
+    const width = Math.max(1, Math.round(window.innerWidth * dpr));
+    const height = Math.max(1, Math.round(window.innerHeight * dpr));
 
     if (canvas.width !== width || canvas.height !== height) {
       canvas.width = width;
       canvas.height = height;
       lastDrawnRef.current = -1;
-      console.log(`✅ Canvas size set to ${canvas.width}x${canvas.height}`);
     }
   }, []);
 
@@ -146,29 +139,19 @@ export default function ScrollAnimation() {
   const drawFrame = useCallback(
     (index: number) => {
       const canvas = canvasRef.current;
-      if (!canvas) {
-        console.log("❌ No canvas element");
-        return;
-      }
+      if (!canvas) return;
 
       const ctx = canvas.getContext("2d", { alpha: false });
-      if (!ctx) {
-        console.log("❌ No canvas context");
-        return;
-      }
+      if (!ctx) return;
 
       const urls = frameUrlsRef.current;
       const safeIndex = clamp(index, 0, Math.max(urls.length - 1, 0));
       const entry = frameStoreRef.current[safeIndex];
 
-      if (!entry) {
-        console.log(`❌ No entry for index ${safeIndex}`);
-        return;
-      }
+      if (!entry) return;
       entry.lastUsedAt = performance.now();
 
       if (entry.status !== "loaded" || !entry.image) {
-        console.log(`⏳ Frame ${safeIndex} not loaded yet, loading...`);
         void loadFrame(safeIndex, true);
         return;
       }
@@ -178,8 +161,6 @@ export default function ScrollAnimation() {
       const ch = canvas.height;
       const iw = img.naturalWidth || img.width;
       const ih = img.naturalHeight || img.height;
-
-      console.log(`🖼️ Drawing frame ${safeIndex}: canvas=${cw}x${ch}, image=${iw}x${ih}`);
 
       // Cover fit - like CSS object-fit: cover
       const canvasRatio = cw / ch;
@@ -242,16 +223,12 @@ export default function ScrollAnimation() {
     let mounted = true;
 
     async function boot() {
-      console.log("🎬 Starting scroll animation initialization...");
-
       const response = await fetch("/frames/manifest.json", { cache: "no-store" });
       if (!response.ok) throw new Error("manifest.json missing");
 
       const manifest = (await response.json()) as Manifest;
       const files = Array.isArray(manifest.files) ? manifest.files : [];
       if (!files.length) throw new Error("No frames in manifest");
-
-      console.log(`📦 Loaded manifest with ${files.length} frames`);
 
       const urls = files.map((name) => `/frames/${name}`);
       frameUrlsRef.current = urls;
@@ -270,24 +247,20 @@ export default function ScrollAnimation() {
 
       resizeCanvas();
 
-      console.log("⏳ Loading first batch of frames...");
       const immediate = Math.min(FIRST_BATCH, urls.length);
       await Promise.all(Array.from({ length: immediate }, (_, i) => loadFrame(i, true)));
 
-      console.log(`✅ Loaded ${immediate} frames, queuing rest...`);
       for (let i = immediate; i < urls.length; i += 1) {
         bgQueueRef.current.push(i);
       }
       pumpBackgroundQueue();
 
-      console.log("🎨 Drawing first frame...");
       drawFrame(0);
       setIsReady(true);
-      console.log("✨ Scroll animation ready!");
     }
 
     void boot().catch((error) => {
-      console.error("❌ Failed to initialize scroll animation", error);
+      console.error("Failed to initialize scroll animation", error);
     });
 
     return () => {
@@ -308,9 +281,6 @@ export default function ScrollAnimation() {
       targetRef.current = Math.round(progress * (frameUrlsRef.current.length - 1));
       requestRender();
     };
-
-    // Log viewport info
-    console.log(`🖥️ Viewport: ${window.innerWidth}x${window.innerHeight}, scrollHeight: ${document.documentElement.scrollHeight}`);
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", resizeCanvas);
