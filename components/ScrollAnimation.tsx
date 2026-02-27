@@ -174,17 +174,33 @@ export default function ScrollAnimation() {
       const iw = img.naturalWidth || img.width;
       const ih = img.naturalHeight || img.height;
 
-      // Cover fit - like CSS object-fit: cover
+      // Detect portrait (mobile) vs landscape
+      const isPortrait = cw < ch;
+
+      // On portrait (mobile), use "contain" to show full car
+      // On landscape (desktop), use "cover" for full-screen effect
       const canvasRatio = cw / ch;
       const imgRatio = iw / ih;
       let dw, dh;
 
-      if (imgRatio > canvasRatio) {
-        dh = ch;
-        dw = iw * (ch / ih);
+      if (isPortrait) {
+        // Contain fit: show entire image, may have black bars
+        if (imgRatio > canvasRatio) {
+          dw = cw;
+          dh = ih * (cw / iw);
+        } else {
+          dh = ch;
+          dw = iw * (ch / ih);
+        }
       } else {
-        dw = cw;
-        dh = ih * (cw / iw);
+        // Cover fit: fill screen, crop edges
+        if (imgRatio > canvasRatio) {
+          dh = ch;
+          dw = iw * (ch / ih);
+        } else {
+          dw = cw;
+          dh = ih * (cw / iw);
+        }
       }
 
       const dx = (cw - dw) / 2;
