@@ -50,15 +50,15 @@ export default function LightRays() {
       // Animate time
       timeRef.current += 0.005;
 
+      // Mouse influence values
+      const mouseInfluenceX = (mouseRef.current.x - 0.5) * 100;
+      const mouseInfluenceY = mouseRef.current.y * 50;
+
       // Draw rays
       for (let i = 0; i < rayCount; i++) {
         const angle = (i / rayCount) * Math.PI * 2;
         const rayWidth = maxRayWidth * (0.5 + 0.5 * Math.sin(timeRef.current + i * 0.5));
         const opacity = 0.03 + 0.02 * Math.sin(timeRef.current * 0.7 + i);
-
-        // Mouse influence on ray direction
-        const mouseInfluenceX = (mouseRef.current.x - 0.5) * 100;
-        const mouseInfluenceY = mouseRef.current.y * 50;
 
         ctx.save();
         ctx.translate(originX, originY);
