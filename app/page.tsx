@@ -46,7 +46,20 @@ const platform = [
 export default function HomePage() {
   return (
     <main className="text-text relative">
-      <LightRays />
+      <LightRays
+        raysOrigin="top-center"
+        raysColor="#ffffff"
+        raysSpeed={1.7}
+        lightSpread={1}
+        rayLength={5}
+        pulsating={false}
+        fadeDistance={3}
+        saturation={2}
+        followMouse
+        mouseInfluence={0.55}
+        noiseAmount={0}
+        distortion={0}
+      />
       <Navbar />
 
       {/* Hero Section */}
