@@ -53,9 +53,12 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-24">
         <div className="mx-auto max-w-5xl text-center">
           <div className="rounded-3xl border border-line/30 bg-black/40 backdrop-blur-md p-12 md:p-16">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight">
-              CortexAuto — The Intelligence Layer for Modern Dealerships
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-accent">
+              CortexAuto
             </h1>
+            <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+              The Intelligence Layer for Modern Dealerships
+            </h2>
             <div className="mt-8 space-y-4 max-w-3xl mx-auto">
               <p className="text-lg md:text-xl leading-relaxed">
                 An AI-powered revenue engine built directly into your dealership website.
