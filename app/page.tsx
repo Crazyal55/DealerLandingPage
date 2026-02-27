@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import ScrollAnimation from "@/components/ScrollAnimation";
+import LightRays from "@/components/LightRays";
 
 const features = [
   {
@@ -46,7 +46,7 @@ const platform = [
 export default function HomePage() {
   return (
     <main className="text-text relative">
-      <ScrollAnimation />
+      <LightRays />
       <Navbar />
 
       {/* Hero Section */}
