@@ -2,6 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+// Detect basePath for GitHub Pages deployment
+function getBasePath(): string {
+  if (typeof window === "undefined") return "";
+  const path = window.location.pathname;
+  // Check if we're under a subpath like /DealerLandingPage/
+  const match = path.match(/^\/([^/]+)/);
+  if (match && match[1] && !match[1].startsWith("_")) {
+    return `/${match[1]}`;
+  }
+  return "";
+}
+
 type Manifest = {
   files: string[];
 };
@@ -223,14 +235,15 @@ export default function ScrollAnimation() {
     let mounted = true;
 
     async function boot() {
-      const response = await fetch("/frames/manifest.json", { cache: "no-store" });
+      const basePath = getBasePath();
+      const response = await fetch(`${basePath}/frames/manifest.json`, { cache: "no-store" });
       if (!response.ok) throw new Error("manifest.json missing");
 
       const manifest = (await response.json()) as Manifest;
       const files = Array.isArray(manifest.files) ? manifest.files : [];
       if (!files.length) throw new Error("No frames in manifest");
 
-      const urls = files.map((name) => `/frames/${name}`);
+      const urls = files.map((name) => `${basePath}/frames/${name}`);
       frameUrlsRef.current = urls;
       frameStoreRef.current = urls.map(() => ({
         status: "idle",
