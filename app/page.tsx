@@ -52,7 +52,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-24">
         <div className="mx-auto max-w-5xl text-center">
-          <div className="rounded-3xl border border-line/80 bg-black/90 backdrop-blur-md p-12 md:p-16">
+          <div className="rounded-3xl border border-line/30 bg-black/40 backdrop-blur-md p-12 md:p-16">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight">
               CortexAuto — The Intelligence Layer for Modern Dealerships
             </h1>
@@ -65,10 +65,10 @@ export default function HomePage() {
               </p>
             </div>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="rounded-full border border-accent/80 bg-accent/20 px-8 py-4 text-base font-medium text-accent transition hover:bg-accent/30">
+              <button className="rounded-full border border-accent/40 bg-accent/20 px-8 py-4 text-base font-medium text-accent transition hover:bg-accent/30">
                 Book a Demo
               </button>
-              <button className="rounded-full border border-line/80 bg-black/70 px-8 py-4 text-base font-medium text-text transition hover:bg-black/60">
+              <button className="rounded-full border border-line/30 bg-black/30 px-8 py-4 text-base font-medium text-text transition hover:bg-black/60">
                 Join the Platform
               </button>
             </div>
@@ -78,7 +78,7 @@ export default function HomePage() {
 
       {/* Features Section */}
       <section id="features" className="mx-auto w-full max-w-6xl px-6 py-32">
-        <div className="mb-16 rounded-2xl border border-line/80 bg-black/85 backdrop-blur-sm p-8 inline-block">
+        <div className="mb-16 rounded-2xl border border-line/30 bg-black/35 backdrop-blur-sm p-8 inline-block">
           <p className="text-sm uppercase tracking-[0.18em] text-accent">Features</p>
           <h2 className="mt-4 text-3xl md:text-4xl font-semibold">Powerful Features</h2>
         </div>
@@ -87,7 +87,7 @@ export default function HomePage() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-line/70 bg-black/95 backdrop-blur-md p-8 hover:bg-black/90 transition-colors"
+              className="rounded-2xl border border-line/25 bg-black/50 backdrop-blur-md p-8 hover:bg-black/40 transition-colors"
             >
               <h3 className="text-lg font-semibold">{feature.title}</h3>
               <p className="mt-3 leading-relaxed">{feature.description}</p>
@@ -98,7 +98,7 @@ export default function HomePage() {
 
       {/* Tagline Section 1 */}
       <section className="mx-auto w-full max-w-6xl px-6 py-24">
-        <div className="rounded-3xl border border-accent/40 bg-black/95 backdrop-blur-md p-12 md:p-20 text-center">
+        <div className="rounded-3xl border border-accent/40 bg-black/50 backdrop-blur-md p-12 md:p-20 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Track What Matters.
           </h2>
@@ -110,7 +110,7 @@ export default function HomePage() {
 
       {/* Platform Section */}
       <section id="platform" className="mx-auto w-full max-w-6xl px-6 py-32">
-        <div className="mb-16 rounded-2xl border border-line/80 bg-black/85 backdrop-blur-sm p-8">
+        <div className="mb-16 rounded-2xl border border-line/30 bg-black/35 backdrop-blur-sm p-8">
           <p className="text-sm uppercase tracking-[0.18em] text-accent">Platform</p>
           <h2 className="mt-4 text-3xl md:text-4xl font-semibold">Built for Scale</h2>
           <p className="mt-4 text-lg max-w-2xl">
@@ -122,7 +122,7 @@ export default function HomePage() {
           {platform.map((item, index) => (
             <div
               key={index}
-              className="rounded-xl border border-line/70 bg-black/95 backdrop-blur-md p-6 hover:bg-black/90 transition-colors"
+              className="rounded-xl border border-line/25 bg-black/50 backdrop-blur-md p-6 hover:bg-black/40 transition-colors"
             >
               <p className="font-medium">{item}</p>
             </div>
@@ -132,13 +132,13 @@ export default function HomePage() {
 
       {/* Analytics Section */}
       <section id="analytics" className="mx-auto w-full max-w-6xl px-6 py-32">
-        <div className="mb-16 rounded-2xl border border-line/80 bg-black/85 backdrop-blur-sm p-8">
+        <div className="mb-16 rounded-2xl border border-line/30 bg-black/35 backdrop-blur-sm p-8">
           <p className="text-sm uppercase tracking-[0.18em] text-accent">Analytics</p>
           <h2 className="mt-4 text-3xl md:text-4xl font-semibold">Customer Analytics Engine</h2>
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-2xl border border-line/70 bg-black/95 backdrop-blur-md p-8 md:p-12">
+          <div className="rounded-2xl border border-line/25 bg-black/50 backdrop-blur-md p-8 md:p-12">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-2xl font-semibold">Behavioral Intelligence</h3>
@@ -152,7 +152,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-line/70 bg-black/95 backdrop-blur-md p-8 md:p-12">
+          <div className="rounded-2xl border border-line/25 bg-black/50 backdrop-blur-md p-8 md:p-12">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-2xl font-semibold">Seamless CRM Integration</h3>
@@ -170,7 +170,7 @@ export default function HomePage() {
 
       {/* Tagline Section 2 */}
       <section className="mx-auto w-full max-w-6xl px-6 py-24">
-        <div className="rounded-3xl border border-accent/40 bg-black/95 backdrop-blur-md p-12 md:p-20 text-center">
+        <div className="rounded-3xl border border-accent/40 bg-black/50 backdrop-blur-md p-12 md:p-20 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Turn Website Visitors Into Measurable Sales.
           </h2>
@@ -179,16 +179,16 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section id="cta" className="mx-auto w-full max-w-4xl px-6 py-32 text-center">
-        <div className="rounded-3xl border border-accent/40 bg-black/95 backdrop-blur-md p-12 md:p-16">
+        <div className="rounded-3xl border border-accent/40 bg-black/50 backdrop-blur-md p-12 md:p-16">
           <p className="text-sm uppercase tracking-[0.18em] text-accent">Get Started</p>
           <h2 className="mt-4 text-3xl md:text-4xl font-semibold">
             Book a demo or join the platform to modernize your dealership.
           </h2>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="rounded-full border border-accent/80 bg-accent/20 px-8 py-4 text-base font-medium text-accent transition hover:bg-accent/30">
+            <button className="rounded-full border border-accent/40 bg-accent/20 px-8 py-4 text-base font-medium text-accent transition hover:bg-accent/30">
               Book a Demo
             </button>
-            <button className="rounded-full border border-line/80 bg-black/70 px-8 py-4 text-base font-medium text-text transition hover:bg-black/60">
+            <button className="rounded-full border border-line/30 bg-black/30 px-8 py-4 text-base font-medium text-text transition hover:bg-black/60">
               Join the Platform
             </button>
           </div>
@@ -196,7 +196,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-line/30 bg-black/92 backdrop-blur-sm">
+      <footer className="border-t border-line/30 bg-black/45 backdrop-blur-sm">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="grid gap-12 md:grid-cols-4">
             <div>
